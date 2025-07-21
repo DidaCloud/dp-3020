@@ -173,6 +173,7 @@ GitHub Actions enable you to automate, customize, and run your software developm
 1. Select the **set up a workflow yourself** link.
 1. Copy the code below on your **main.yml** file. The code includes the steps for building and deploying your database project.
 
+    {% raw %}
     ```yaml
     name: Build and Deploy SQL Database Project
     on:
@@ -208,8 +209,9 @@ GitHub Actions enable you to automate, customize, and run your software developm
               action: 'publish'
               build-arguments: '-c Release'
               arguments: '/p:DropObjectsNotInSource=true'  # Optional: Customize as needed
-      ```
-
+    ```
+    {% endraw %}
+   
       The **Build and Deploy SQL Project** step in your YAML file connects to your Azure SQL Database using the connection string stored in the `AZURE_CONN_STRING` secret. The action specifies the path to your SQL project file, sets the action to publish to deploy the project, and includes build arguments to compile in Release mode. Additionally, it uses the `/p:DropObjectsNotInSource=true` argument to ensure that any objects not present in the source are dropped from the target database during deployment.
 
 1. Commit the changes.
